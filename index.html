@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NSU IT Equipment Gate Pass</title>
+  <style>
+    :root{--navy:#061742;--blue:#0982bb;--pale:#f2f6f9;--ink:#172033;--muted:#64748b}
+    *{box-sizing:border-box} body{margin:0;background:#f3f6f9;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+    header{background:linear-gradient(110deg,#061742,#0982bb);color:#fff;padding:22px max(24px,calc((100% - 1180px)/2));box-shadow:0 3px 14px #06174225}
+    .brand{display:flex;align-items:center;gap:15px}.brand img{width:66px;height:66px;object-fit:contain;background:#fff;border-radius:50%;padding:4px}
+    .brand h1{font-size:21px;margin:0 0 5px;letter-spacing:.4px}.brand p{margin:0;color:#dceefa;font-size:13px}
+    .topline{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#c5e8f8;margin-bottom:6px}
+    main{max-width:1180px;margin:30px auto;padding:0 20px 50px;display:grid;grid-template-columns:minmax(300px,430px) minmax(450px,1fr);gap:24px;align-items:start}
+    .panel{background:white;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 8px 28px #0b2d4b0b;overflow:hidden}
+    .panel-head{padding:19px 22px;border-bottom:1px solid #e8eef3}.panel-head h2{font-size:17px;margin:0 0 5px;color:var(--navy)}.panel-head p{margin:0;color:var(--muted);font-size:12px}
+    form{padding:20px 22px}.field{margin-bottom:15px}.field label{display:block;font-size:12px;font-weight:700;color:#34445b;margin-bottom:7px}
+    input,select,textarea{width:100%;border:1px solid #d5dee8;border-radius:8px;padding:11px 12px;font-size:14px;color:#18253a;background:#fff;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #0982bb18}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btns{display:flex;gap:10px;margin-top:20px}.btn{border:0;border-radius:8px;padding:12px 15px;font-weight:700;cursor:pointer;font-size:13px}
+    .primary{background:var(--blue);color:#fff;flex:1}.secondary{background:#eaf2f7;color:var(--navy)}.btn:disabled{opacity:.6;cursor:wait}
+    .status{font-size:12px;min-height:18px;margin-top:12px;color:#147547}.hint{font-size:11px;color:var(--muted);line-height:1.5;margin-top:12px}
+    .preview-wrap{padding:20px;background:#e9eff4;min-height:720px}
+    .paper{background:#fff;width:100%;max-width:700px;margin:0 auto;min-height:660px;padding:35px 38px;box-shadow:0 4px 18px #06174214;position:relative;color:#172033}
+    .paper-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--blue);padding-bottom:15px}
+    .paper-head img{width:70px;height:70px;object-fit:contain}.paper-head h2{font-size:19px;color:var(--navy);margin:0 0 5px;letter-spacing:.4px}.paper-head p{font-size:11px;margin:0;color:#526276}
+    .doc-title{text-align:center;margin:23px 0 5px;font-size:20px;color:var(--navy);letter-spacing:1.2px}
+    .doc-sub{text-align:center;font-size:10px;color:#64748b;margin-bottom:22px}
+    .meta{display:flex;justify-content:space-between;gap:12px;background:#f2f6f9;border:1px solid #dce7ef;border-radius:6px;padding:11px 13px;font-size:11px;margin-bottom:20px}
+    .section-label{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 8px}
+    .details{width:100%;border-collapse:collapse;font-size:12px}.details th,.details td{border:1px solid #d8e1e9;padding:10px;text-align:left;vertical-align:top}.details th{width:34%;background:#f6f9fb;color:#42536a;font-weight:700}
+    .purpose{border:1px solid #d8e1e9;border-radius:5px;min-height:54px;padding:10px;font-size:12px;white-space:pre-wrap}
+    .declaration{font-size:10px;color:#526276;line-height:1.55;margin-top:17px}
+    .signatures{display:grid;grid-template-columns:1fr 1fr;gap:55px;margin-top:70px}
+    .sign-line{border-top:1px solid #25364d;padding-top:8px;text-align:center;font-size:11px;font-weight:700;color:#24344b}
+    .sign-line small{display:block;font-size:9px;color:#64748b;font-weight:400;margin-top:4px}
+    .paper-foot{position:absolute;bottom:17px;left:38px;right:38px;border-top:1px solid #e1e8ee;padding-top:8px;display:flex;justify-content:space-between;font-size:9px;color:#8190a2}
+    @media(max-width:900px){main{grid-template-columns:1fr}.preview-wrap{padding:12px}.paper{min-height:680px}}
+    @media(max-width:560px){.two{grid-template-columns:1fr}.paper{padding:22px 18px}.paper-foot{left:18px;right:18px}.signatures{gap:25px}.brand h1{font-size:17px}}
+    @page{size:A4;margin:12mm}
+    @media print{
+      body{background:#fff}.no-print,header,main>.panel:first-child{display:none!important}
+      main{display:block;margin:0;padding:0;max-width:none}.panel{border:0;box-shadow:none}.preview-wrap{padding:0;background:#fff}
+      .paper{max-width:none;width:100%;min-height:265mm;box-shadow:none;padding:10mm 9mm}
+      .paper-foot{bottom:5mm;left:9mm;right:9mm}
+    }
+  </style>
+</head>
+<body>
+<header class="no-print">
+  <div class="brand">
+    <img class="brand-logo" src="nsu-logo.png" alt="NSU Logo">
+    <div><div class="topline">Office of Information Technology</div><h1>NSU IT Equipment Gate Pass</h1><p>Center of Excellence in Higher Education</p></div>
+  </div>
+</header>
+<main>
+  <section class="panel no-print">
+    <div class="panel-head"><h2>Create equipment gate pass</h2><p>Enter the equipment and vendor details. The printable pass updates automatically.</p></div>
+    <form id="gateForm">
+      <div class="field"><label for="productType">PRODUCT TYPE *</label>
+        <select id="productType" required>
+          <option value="">Select product type</option><option>MVP</option><option>Screen</option><option>Monitor</option><option>Mouse</option><option>Keyboard</option><option>Switcher</option><option>HDMI</option><option>Smartboard</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field" id="otherWrap" hidden><label for="otherType">OTHER PRODUCT TYPE *</label><input id="otherType" placeholder="Enter product type"></div>
+      <div class="two">
+        <div class="field"><label for="productId">PRODUCT ID *</label><input id="productId" required placeholder="e.g. NSU-IT-001"></div>
+        <div class="field"><label for="serialNumber">SERIAL NUMBER (S/N) *</label><input id="serialNumber" required placeholder="Enter serial number"></div>
+      </div>
+      <div class="field"><label for="vendorCompany">VENDOR COMPANY *</label><input id="vendorCompany" required placeholder="Company name"></div>
+      <div class="field"><label for="vendorPerson">VENDOR REPRESENTATIVE / CARRIER NAME *</label><input id="vendorPerson" required placeholder="Person carrying the equipment"></div>
+      <div class="field"><label for="destination">DESTINATION / WHERE THE ITEM IS GOING *</label><input id="destination" required placeholder="e.g. Vendor service center / NSU room"></div>
+      <div class="field"><label for="purpose">PURPOSE / REMARKS</label><textarea id="purpose" rows="2" placeholder="Repair, replacement, inspection, return, etc."></textarea></div>
+      <div class="field"><label for="itRep">IT REPRESENTATIVE NAME (OPTIONAL)</label><input id="itRep" placeholder="Name of IT representative"></div>
+      <div class="btns"><button class="btn primary" id="saveBtn" type="submit">Save record &amp; generate pass</button><button class="btn secondary" type="button" id="printBtn">Print</button></div>
+      <div class="status" id="status" role="status"></div>
+      <p class="hint">The pass date and time are generated from your device clock. Saving to Google Sheets requires the Apps Script Web App URL to be configured in <b>app.js</b>.</p>
+    </form>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head no-print"><h2>Live print preview</h2><p>Review the details before printing. Signatures are completed by hand.</p></div>
+    <div class="preview-wrap">
+      <article class="paper" id="printArea">
+        <div class="paper-head">
+          <img class="paper-logo" src="nsu-logo.png" alt="NSU Logo">
+          <div><h2>NORTH SOUTH UNIVERSITY</h2><p>Center of Excellence in Higher Education</p><p>Office of Information Technology</p></div>
+        </div>
+        <h3 class="doc-title">EQUIPMENT GATE PASS</h3><div class="doc-sub">IT EQUIPMENT MOVEMENT / VENDOR SERVICE RECORD</div>
+        <div class="meta"><span><b>Pass No:</b> <span id="pPassNo">Will be generated</span></span><span><b>Date &amp; Time:</b> <span id="pDate"></span></span></div>
+        <div class="section-label">Equipment information</div>
+        <table class="details">
+          <tr><th>Product Type</th><td id="pType">—</td></tr>
+          <tr><th>Product ID</th><td id="pId">—</td></tr>
+          <tr><th>Serial Number (S/N)</th><td id="pSerial">—</td></tr>
+        </table>
+        <div class="section-label">Vendor &amp; movement details</div>
+        <table class="details">
+          <tr><th>Vendor Company</th><td id="pCompany">—</td></tr>
+          <tr><th>Vendor Representative / Carrier</th><td id="pPerson">—</td></tr>
+          <tr><th>Destination</th><td id="pDestination">—</td></tr>
+          <tr><th>IT Representative</th><td id="pRep">—</td></tr>
+        </table>
+        <div class="section-label">Purpose / remarks</div><div class="purpose" id="pPurpose">—</div>
+        <p class="declaration">This document confirms that the equipment described above is being moved for the stated purpose. The signatures below acknowledge the handover / movement of the listed equipment.</p>
+        <div class="signatures">
+          <div class="sign-line">IT Representative Signature<small>Name: <span id="pRepName">________________</span></small><small>Date: __________________</small></div>
+          <div class="sign-line">Vendor Representative Signature<small>Name: <span id="pVendorName">________________</span></small><small>Date: __________________</small></div>
+        </div>
+        <div class="paper-foot"><span>North South University · Office of IT</span><span>System-generated gate pass</span></div>
+      </article>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
